@@ -1,3 +1,28 @@
+function showProductsList(){
+
+    let htmlContentToAppend = "";
+    for(let i = 0; i < currentProductsArray.length; i++){
+        let category = currentCProductsArray[i];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
