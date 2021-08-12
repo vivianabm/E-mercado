@@ -1,11 +1,23 @@
+var categoriesArray = [];
+
 function showProductsList(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
-        let category = currentCProductsArray[i];
+        let products = currentProductsArray[i];
+htmlContentToAppend += `
+<tr>
+                <td>` + currentProductsArray[i].name + `</td>
+                <td>`+ currentProductsArray[i].cost + `</td>
+                <td>`+ currentProductsArray[i].description + `</td>
+            
+                </tr> 
 
+            `;
+        }
 
-
+        document.getElementById("results").innerHTML = htmlContentToAppend;
+    }
 
 
 
