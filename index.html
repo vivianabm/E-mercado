@@ -1,109 +1,154 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      </div>
-    </nav>
-    <main role="main">
-      <section class="jumbotron text-center">
-        <div class="m-5">
-          <h1></h1>
-        </div>
-      </section>
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <a href="categories.html" class="card mb-4 shadow-sm custom-card">
-                <img class="bd-placeholder-img card-img-top"  src="img/cat1.jpg">
-                <h3 class="m-3">Autos (122)</h3>
-                <div class="card-body">
-                  <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    
+body {
+    font-family:'Aharoni', 'Comic Sans MS';
+    font-weight: bold;
+    font-size: 100%;
+    color: #8f71c7;
+    margin: 0;
+    background-image: url("img/tercima.jpg");
+    background-repeat: no-repeat;
+    background-size:cover ;
+}
+
+#contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+#central {
+    max-width: 320px;
+    width: 100%;
+}
+
+.titulo {
+    font-size: 250%;
+    color:#0f0307;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#login {
+    width: 100%;
+    padding: 50px 30px;
+    background-color: #5777d1;
+    
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    box-sizing: border-box;
+}
+
+#login input {
+    font-family: 'Overpass', sans-serif;
+    font-size: 110%;
+    color: #1b262c;
+    
+    display: block;
+    width: 100%;
+    height: 40px;
+    
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;
+    
+    box-sizing: border-box;
+    
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+#login input::placeholder {
+    font-family: 'Overpass', sans-serif;
+    color: #e4e4e4;
+}
+
+#login button {
+    font-family: 'Overpass', sans-serif;
+    font-size: 110%;
+    color:#1b262c;
+    width: 100%;
+    height: 40px;
+    border: none;
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    background-color: #bbe1fa;
+    
+    margin-top: 10px;
+}
+
+#login button:hover {
+    color:#bbe1fa;
+}
+
+.pie-form {
+    font-size: 90%;
+    text-align: center;    
+    margin-top: 15px;
+}
+
+.pie-form a {
+    display: block;
+    text-decoration: none;
+    color: #484c4d;
+    margin-bottom: 3px;
+}
+  </style>
+                <body>
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        ¡Bienvenido!
+                    </div>
+                    <form id="loginform">
+                        <input type="text" name="usuario" placeholder="Usuario" required>
+                        
+                        <input type="password" placeholder="Contraseña" name="password" required>
+                        
+                        <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                    </form>
+                    <div class="pie-form">
+                        <a href="#">¿Perdiste tu contraseña?</a>
+                        <a href="#">¿No tienes Cuenta? Registrate</a>
+                    </div>
                 </div>
-              </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a href="categories.html" class="card mb-4 shadow-sm custom-card">
-                  <img class="bd-placeholder-img card-img-top" src="img/cat2.jpg">
-                  <h3 class="m-3">Juguetes (354)</h3>
-                  <div class="card-body">
-                    <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
-                  </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="categories.html" class="card mb-4 shadow-sm custom-card">
-                  <img class="bd-placeholder-img card-img-top" src="img/cat3.jpg">
-                  <h3 class="m-3">Muebles (157)</h3>
-                  <div class="card-body">
-                    <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
-                  </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="categories.html" class="card mb-4 shadow-sm custom-card">
-                  <img class="bd-placeholder-img card-img-top" src="img/cat4.jpg">
-                  <h3 class="m-3">Herramientas (452)</h3>
-                  <div class="card-body">
-                    <p class="card-text">Herramientas para cualquier tipo de trabajo.</p>
-                  </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="categories.html" class="card mb-4 shadow-sm custom-card">
-                  <img class="bd-placeholder-img card-img-top" src="img/cat5.jpg">
-                  <h3 class="m-3">Computadoras (724)</h3>
-                  <div class="card-body">
-                    <p class="card-text">Todo en cuanto a computadoras, para uso de oficina y/o juegos.</p>
-                  </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="categories.html" class="card mb-4 shadow-sm custom-card">
-                  <img class="bd-placeholder-img card-img-top" src="img/cat6.jpg">
-                  <h3 class="m-3">Vestimenta (841)</h3>
-                  <div class="card-body">
-                    <p class="card-text">Gran variedad de ropa, nueva y de segunda mano.</p>
-                  </div>
-                </a>
-            </div>
-          </div>
-          <div class="row">
-              <a type="button" class="btn btn-light btn-lg btn-block" href="categories.html">Ver todas</a>
-          </div>
         </div>
-      </div>
-    </main>
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-      </div>
-    </footer>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-  </body>
+
+  <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
+</body>
 </html>
