@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function(e){
           return;
         }
         var clave = document.getElementById('clave').value;
-        if (clave.length == 0) {
+        if (clave == null || clave.length == 0) {
           alert('Debe ingresar una contraseña');
           return;
         }
         this.submit();
       }
       function redireccionar(){
-        window.location.href="index2.html";
+        document.location.href="index2.html";
       } 
 });
