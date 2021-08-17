@@ -18,4 +18,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
         this.submit();
       }
+      function redireccionar(){
+        window.location.href="index2.html";
+      } 
 });
