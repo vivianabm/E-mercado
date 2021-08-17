@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     function validarFormulario(evento) {
         evento.preventDefault();
         var usuario = document.getElementById('usuario').value;
-        if(usuario.length == 0) {
+        if(usuario == null || usuario.length == 0) {
           alert('Debe ingresar su usuario');
           return;
         }
