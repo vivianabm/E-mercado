@@ -4,21 +4,21 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("submitbutton").addEventListener("submit", function() {
-      let usuario = document.getElementById("usuario");
-      let clave = document.getElementById("clave");
+      let usuarioprueb = document.getElementById("usuario");
+      let claveprueb = document.getElementById("clave");
       let camposCompletos = true; // flag 
 
-      if (usuario.value === '') {
-        usuario.classList.add("invalido");
+      if (usuarioprueb.value === '') {
+        usuarioprueb.classList.add("invalido");
         camposCompletos = false;
       } else {
-        usuario.classList.remove("invalido");
+        usuarioprueb.classList.remove("invalido");
       }
-      if (clave.value === '') {
-        clave.classList.add("invalido");
+      if (claveprueb.value === '') {
+        claveprueb.classList.add("invalido");
         camposCompletos = false;
       } else {
-       clave.classList.remove("invalido");
+       claveprueb.classList.remove("invalido");
       }
       if (camposCompletos){
         window.location = "inicio.html";
