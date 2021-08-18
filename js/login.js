@@ -1,10 +1,9 @@
 
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("submitbutton").addEventListener("click", function() {
+    document.getElementById("submitbutton").addEventListener("submit", function() {
       let usuario = document.getElementById("usuario");
       let clave = document.getElementById("clave");
       let camposCompletos = true; // flag 
@@ -22,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function(){
        clave.classList.remove("invalido");
       }
       if (camposCompletos){
-        window.location = 'inicio.html'
+      } else {
+        window.location = "inicio.html";
       }
       });
     });
