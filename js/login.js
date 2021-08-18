@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function(){
        clave.classList.remove("invalido");
       }
       if (camposCompletos){
-      } else {
         window.location = "inicio.html";
       }
       });
