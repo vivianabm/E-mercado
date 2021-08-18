@@ -3,26 +3,21 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("submitbutton").addEventListener("submit", function() {
-      let usuarioprueb = document.getElementById("usuario");
-      let claveprueb = document.getElementById("clave");
-      let camposCompletos = true; // flag 
-
-      if (usuarioprueb.value === '') {
-        usuarioprueb.classList.add("invalido");
-        camposCompletos = false;
-      } else {
-        usuarioprueb.classList.remove("invalido");
+    document.getElementById("loginform").addEventListener('submit', validarFormulario);
+    function validarFormulario(evento) {
+      evento.preventDefault ();
+      var usuario = document.getElementById('usuario').value;
+      if (usuario.length == 0){
+        alert ('Debe ingresar su usuario');
+        return;
       }
-      if (claveprueb.value === '') {
-        claveprueb.classList.add("invalido");
-        camposCompletos = false;
-      } else {
-       claveprueb.classList.remove("invalido");
+      var clave = document.getElementById('clave').value;
+      if (clave.length == 0){
+        alert ('Debe ingresar su contraseña');
+        return;
       }
-      if (camposCompletos){
-        window.location = "inicio.html";
-      }
-      });
-    });
-  
+      this.submit();
+    }
+    window.location="inicio.html";
+  });
+      
