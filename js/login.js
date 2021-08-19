@@ -1,23 +1,58 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("loginform").addEventListener('submit', validarFormulario);
-    function validarFormulario(evento) {
-      evento.preventDefault ();
-      var usuario = document.getElementById('usuario').value;
-      if (usuario.length == 0){
-        alert ('Debe ingresar su usuario');
-        return;
-      }
-      var clave = document.getElementById('clave').value;
-      if (clave.length == 0){
-        alert ('Debe ingresar su contraseña');
-        return;
-      }
-      this.submit();
-    }
-    window.location="inicio.html";
-  });
-      
+document.addEventListener("DOMContentLoaded", function() {
+document.getElementById("submitbotton").addEventListener("clicK", function () {
+ let  inputUsuario = document.getElementById ("inputUsuario");
+ let  inputClave = document.getElementById ("inputClave");
+ let todoCompleto = true ;
+  
+ if  ( inputUsuario.value  ===  "" ) {
+  inputUsuario.classList.add("invalid");
+    todoCompleto = false;
+}else{
+  inputUsuario.classList.remove("invalid");
+
+if ( inputClave.value  ===  "" ) {
+  inputClave.classList.add("invalid");
+    todoCompleto = false;
+}else{
+  inputClave.classList.remove("invalid");
+}
+if (todoCompleto){
+
+  if (inputUsuario.value,inputClave.value){
+    window.location= 'inicio.html';
+  }
+  else {
+      alert("Usuario o contraseña incorrectas!")
+  }
+}
+else {
+  alert("Debes ingresar los datos!")
+}
+}
+});
+});
+
+  
+
+   
