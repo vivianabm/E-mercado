@@ -1,4 +1,4 @@
-var productsArray = []; // declaro la variable products como un array vacio donde guardo lo que encuentre en el JSON
+var productsArray = []; // declaro la variable productsArray como un array vacio donde guardo lo que encuentre en el JSON
 function showProductsList(array){ //declaro función
 
     let htmlContentToAppend = ""; //para no cargar contenido cada vez
@@ -28,10 +28,6 @@ htmlContentToAppend += `
 
  document.getElementById("results").innerHTML = htmlContentToAppend; //agrego el contenido a "results"
 }
-
-            
-            
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
