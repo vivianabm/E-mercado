@@ -5,7 +5,7 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function() { 
 
-  document.getElementById("submitbutton").addEventListener("click", function(e){ // una vez que el usuario haga click en el botón se ejecuta la función
+  document.getElementById("submitBtn").addEventListener("click", function(e){ // una vez que el usuario haga click en el botón se ejecuta la función
     let inputUsuario = document.getElementById("inputUsuario"); // traigo los campos usuario y contraseña con el id y los guardo
     let inputClave = document.getElementById("inputClave");
     let camposCompletos = true; // flag variable que cambiará de acuerdo a la circunstancia "true" si los campos están completos
