@@ -7,7 +7,7 @@ function showProductsList(array){ //declaro función
 htmlContentToAppend += `
             <div class="row"> 
                 <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                    <img src="` + product.imgSrc + `" alt="` + `" class="img-thumbnail">
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
