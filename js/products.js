@@ -1,10 +1,52 @@
-
 var productsArray = []; // declaro la variable productsArray como un array vacio donde guardo lo que encuentre en el JSON
+
+const ORDER_ASC_BY_PRECIO = "precio->PRECIO";
+const ORDER_DESC_BY_PRECIO = "PRECIO->precio";
+const ORDER_DESC_BY_REL= "COSTO->costo";
+
+
+var minPrecio = undefined;
+var maxPrecio = undefined;
+var buscar = undefined;
+
+
+function sortProducts(criterio,array){
+    let result = [];
+
+    if (criterio === ORDER_ASC_BY_PRECIO) {
+        result = array.sort(function(a,b) {
+            if (a.cost < b.cost) {return -1 ;}
+            if(a.cost>b.cost) {return 1;}
+            return 0;
+        });
+
+     } else  if (criterio === ORDER_DESC_BY_PRECIO) {
+            result = array.sort(function(a,b) {
+                if (a.cost > b.cost) {return -1 ;}
+                if(a.cost<b.cost) {return 1;}
+                return 0;
+            });
+
+    }else if (criterio === ORDER_DESC_BY_REL) {
+        result = array.sort(function(a,b){
+            if (a.soldCount > b.soldCount) {return -1 ;}
+            if(a.soldCount<b.soldCount) {return 1;}
+            return 0;
+        });
+    }
+    return result;
+}
+
+
+
 function showProductsList(array){ //declaro función
 
     let htmlContentToAppend = ""; //para no cargar contenido cada vez
     for(let i = 0; i < array.length; i++){ // inicio el contador, recorro la lista y aumento el contador hasta que la condición no sea verdadera
         let product = array[i];
+        if(((minPrecio == undefined)||(minPrecio != undefined && parseInt(product.cost)>=minPrecio))&&((maxPrecio == undefined)|| (maxPrecio != undefined&& parseInt(product.cost)<=maxPrecio)))
+        {
+            if(buscar == undefined || product.name.toLowerCase().indexOf(buscar)!= -1 ){
 htmlContentToAppend += `
             <div class="row"> 
                 <div class="col-3">
@@ -26,18 +68,73 @@ htmlContentToAppend += `
       
     `
  }
+}
 
  document.getElementById("results").innerHTML = htmlContentToAppend; //agrego el contenido a "results"
 }
-
+}
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){ // le pasamos por parámetro la URL
         if (resultObj.status === "ok") // si está todo ok ejecuto el código
-        {
-            productsArray = resultObj.data;
-             //Muestro las categorías ordenadas
-             showProductsList(productsArray);
-         }
+        { productsArray = resultObj.data;
+            productsArray = sortProducts(ORDER_ASC_BY_PRECIO, productsArray)
+            
+           
+            showProductsList(productsArray);
+        }
+    });
+document.getElementById("sortAsc").addEventListener("click", function(){
+    productsArray = sortProducts(ORDER_ASC_BY_PRECIO, productsArray);
+    showProductsList(productsArray);
+});
+
+document.getElementById("sortDesc").addEventListener("click",function(){
+    productsArray = sortProducts(ORDER_DESC_BY_PRECIO, productsArray);
+    showProductsList(productsArray);
+});
+
+document.getElementById("sortByCount").addEventListener("click",function(){
+    productsArray = sortProducts(ORDER_DESC_BY_REL, productsArray);
+    showProductsList(productsArray);
+});
+
+
+
+
+
+    document.getElementById("rangeFilterCount").addEventListener("click", function() {
+        minPrecio = document.getElementById("rangeFilterCountMin").value;
+        maxPrecio = document.getElementById("rangeFilterCountMax").value;
+ 
+    if ((minPrecio != undefined) && (minPrecio != "") && (parseInt(minPrecio)) >= 0) {
+        minPrecio = parseInt(minPrecio);
+    }   
+    else {
+        minPrecio = undefined;
+    } 
+    
+    if ((maxPrecio != undefined) &&(maxPrecio != "")&& (parseInt(maxPrecio))>=0){
+        maxPrecio = parseInt(maxPrecio);
+    }   
+    else {
+        maxPrecio = undefined;
+    } 
+ 
+    showProductsList(productsArray)
+
+
+});
+
+document.getElementById('clearRangeFilter').addEventListener("click", function()
+{
+    document.getElementById("rangeFilterCountMin").value = "";
+    document.getElementById("rangeFilterCountMax").value = "";
+ 
+    minPrecio = undefined;
+    maxPrecio = undefined;
+    showProductsList(productsArray)
+});
 });
