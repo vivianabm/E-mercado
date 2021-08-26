@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (camposCompletos){
+      localStorage.setItem('User-Logged',JSON.stringify({usuario : inputUsuario.value}));
         window.location= 'inicio.html';
   }else{
     alert("Debes ingresar usuario y contraseña");
