@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(e){
   
   if(userLogged){
     userLogged = JSON.parse(userLogged);
-    user.innerText =   userLogged.usuario;
+    user.innerText = user.innerText + "Usuario logueado: " + userLogged.usuario;
     infoUser.style = "display : inline-block";
   }
   
