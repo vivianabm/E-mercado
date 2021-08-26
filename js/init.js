@@ -53,10 +53,11 @@ document.addEventListener("DOMContentLoaded", function(e){
     user.innerText = user.innerText + "Usuario logueado: " + userLogged.usuario;
     infoUser.style = "display : inline-block";
   }
-  
+  if (document.getElementById("salir")){
   document.getElementById("salir").addEventListener("click",function() {
     localStorage.removeItem('User-Logged');
     window.location = 'index.html';
   });
+}
   });
   
