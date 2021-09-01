@@ -1,8 +1,8 @@
 var productsArray = []; // declaro la variable productsArray como un array vacio donde guardo lo que encuentre en el JSON
 
-const ORDER_ASC_BY_PRECIO = "precio->PRECIO";
-const ORDER_DESC_BY_PRECIO = "PRECIO->precio";
-const ORDER_DESC_BY_REL= "COSTO->costo";
+const ORDER_ASC_BY_PRECIO = "precio menor->PRECIO MAYOR";
+const ORDER_DESC_BY_PRECIO = "PRECIO MAYOR->precio menor";
+const ORDER_DESC_BY_REL= "MAYOR COSTO->costo menor";
 
 
 var minPrecio = undefined;
@@ -10,7 +10,7 @@ var maxPrecio = undefined;
 var buscar = undefined;
 
 
-function sortProducts(criterio,array){
+function sortProducts(criterio,array){ //ordeno el listado de productos por precio ascendente, descendente y por relevancia
     let result = [];
 
     if (criterio === ORDER_ASC_BY_PRECIO) {
@@ -39,7 +39,7 @@ function sortProducts(criterio,array){
 
 
 
-function showProductsList(array){ //declaro función
+function showProductsList(array){ //declaro función que muestra los productos
 
     let htmlContentToAppend = ""; //para no cargar contenido cada vez
     for(let i = 0; i < array.length; i++){ // inicio el contador, recorro la lista y aumento el contador hasta que la condición no sea verdadera
@@ -87,17 +87,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 document.getElementById("sortAsc").addEventListener("click", function(){
-    productsArray = sortProducts(ORDER_ASC_BY_PRECIO, productsArray);
+    productsArray = sortProducts(ORDER_ASC_BY_PRECIO, productsArray); // ordeno por precio ascendente cuando se hace click
     showProductsList(productsArray);
 });
 
 document.getElementById("sortDesc").addEventListener("click",function(){
-    productsArray = sortProducts(ORDER_DESC_BY_PRECIO, productsArray);
+    productsArray = sortProducts(ORDER_DESC_BY_PRECIO, productsArray); // ordeno por precio descendente cuando se hace click
     showProductsList(productsArray);
 });
 
-document.getElementById("sortByCount").addEventListener("click",function(){
-    productsArray = sortProducts(ORDER_DESC_BY_REL, productsArray);
+document.getElementById("sortByCount").addEventListener("click",function(){ 
+    productsArray = sortProducts(ORDER_DESC_BY_REL, productsArray); //ordeno por relevancia cuando se hace click
     showProductsList(productsArray);
 });
 
