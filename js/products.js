@@ -44,8 +44,8 @@ function showProductsList(array){ //declaro función que muestra los productos
     let htmlContentToAppend = ""; //para no cargar contenido cada vez
     for(let i = 0; i < array.length; i++){ // inicio el contador, recorro la lista y aumento el contador hasta que la condición no sea verdadera
         let product = array[i];
-        if(((minPrecio == undefined)||(minPrecio != undefined && parseInt(product.cost)>=minPrecio))&&((maxPrecio == undefined)|| (maxPrecio != undefined&& parseInt(product.cost)<=maxPrecio)))
-        {
+        if(((minPrecio == undefined)||(minPrecio != undefined && parseInt(product.cost)>=minPrecio))&&
+        ((maxPrecio == undefined)|| (maxPrecio != undefined&& parseInt(product.cost)<=maxPrecio))){
             if(buscar == undefined || product.name.toLowerCase().indexOf(buscar)!= -1 ){
 htmlContentToAppend += `
             <div class="row"> 
@@ -136,5 +136,10 @@ document.getElementById('clearRangeFilter').addEventListener("click", function()
     minPrecio = undefined;
     maxPrecio = undefined;
     showProductsList(productsArray)
+});
+document.getElementById("buscador").addEventListener("input", function() {
+
+    buscar = document.getElementById("buscador").value.toLowerCase();
+    showProductsList(productsArray);
 });
 });
