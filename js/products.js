@@ -8,9 +8,7 @@ const ORDER_DESC_BY_REL= "MAYOR COSTO->costo menor";
 var minPrecio = undefined;
 var maxPrecio = undefined;
 var buscar = undefined;
-
-
-function sortProducts(criterio,array){ //ordeno el listado de productos por precio ascendente, descendente y por relevancia
+function sortProducts(criterio,array){ //ordeno el listado de productos por precio ascendente, descendente y  descendente según relevancia
     let result = [];
 
     if (criterio === ORDER_ASC_BY_PRECIO) {
