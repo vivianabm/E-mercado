@@ -24,7 +24,6 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
 
-       
       <div class="dropdown" id="info-user" style="display :none;">
         <button id="user" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </button>
@@ -42,6 +41,77 @@
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
   </div> -->
+
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2 id="productName"></h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+      </div>
+
+      <hr class="my-3">
+      <div class="carousel slide mb-3" id="carousel" data-ride="carousel">
+        <div class="carousel-inner" id="productImagesGallery"></div>
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <dl>
+        <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Productos vendidos</dt>
+        <dd>
+          <p id="productSoldCount"></p>
+        </dd>
+
+        <dt>Costo del producto</dt>
+        <dd>
+          <p id="productCost"></p>
+        </dd>
+      </dl>
+      <hr class="my-3">
+      <h3 class="text-center p-4">Comentarios</h3>
+      <div id="comments" class="mb-4"></div>
+      <div id="leaveComment" class="my-3">
+        <h3 class="text-center">Deja un comentario</h3>
+        <form class="w-75 mx-auto" id="leaveCommentForm">
+          <label for="formName" class="sr-only">Nombre</label>
+          <input type="text" class="form-control mb-2" id="formName" placeholder="Nombre" required>
+
+          <label for="formPuntuacion" class="sr-only">Puntuación</label>
+          <select id="formPuntuacion" class="form-control mb-2" required>
+            <option value="">Puntúa este producto</option>
+            <option value="1">&#9733;</option>
+            <option value="2">&#9733;&#9733;</option>
+            <option value="3">&#9733;&#9733;&#9733;</option>
+            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+          </select>
+
+          <label for="formMessage" class="sr-only">Comentario</label>
+          <textarea class="form-control mb-2" rows="3" style="resize: none;" id="formMessage" placeholder="Comentario"
+            required></textarea>
+
+          <button class="btn btn-lg btn-light btn-block" type="submit">Comentar</button>
+        </form>
+      </div>
+      <hr class="my3">
+      <a type="button" class="btn btn-primary btn-lg btn-block" href="cart.html">Agregar al carrito</a>
+
+      <h3 class="text-center p-4">Productos relacionados</h3>
+      <div class="container-fluid">
+        <div class="row" id="relatedProducts"></div>
+      </div>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
