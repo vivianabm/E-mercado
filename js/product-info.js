@@ -128,39 +128,11 @@ function showProductData() {
 
             // Llama a funcion para mostrar carousel
             showImagesGallery(product.images);
-            // Llama a funcion para mostrar productos relativos
-            showRelatedProducts(product.relatedProducts);
+           
         }
     });
 }
 
-// Funcion para mostrar productos relativos
-function showRelatedProducts(array) {
-    getJSONData(PRODUCTS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-            let products = resultObj.data;
-            let htmlContentToAppend = '';
-            let relatedContainer = document.getElementById('relatedProducts');
-
-            // Recorre los productos relativos
-            for (let i = 0; i < array.length; i++) {
-                let related = array[i];
-
-                htmlContentToAppend += `
-                <div class='card mx-1' style='width: 18rem;'>
-                        <img class='card-img-top' src='${products[related].imgSrc}' alt=''>
-                        <div class='card-body'>
-                            <h5 class='card-title'>${products[related].name}</h5>
-                            <p class='card-text'>${products[related].description}</p>
-                            <a href="#">Ver</a>
-                        </div>
-                    </div>
-                `
-            }
-            relatedContainer.innerHTML = htmlContentToAppend;
-        }
-    });
-}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
