@@ -144,3 +144,29 @@ a.custom-card:hover {
 background-color: red;
 color: white;
 }
+
+/* Carrusel */
+@media (min-width: 768px) {
+  .carousel-item {
+    height: 450px !important;
+  }
+  .carousel-item img {
+    width: auto !important;
+  };
+}
+.carousel-item {
+  height: auto;
+  background-color: rgb(170, 166, 166);
+}
+.carousel-item img {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+.aProd {
+  color: #000000;
+}
+.aProd:hover {
+  color: #000000;
+  text-decoration: none;
+}
