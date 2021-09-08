@@ -46,6 +46,7 @@ function showProductsList(array){ //declaro función que muestra los productos
         ((maxPrecio == undefined)|| (maxPrecio != undefined&& parseInt(product.cost)<=maxPrecio))){
             if(buscar == undefined || product.name.toLowerCase().indexOf(buscar)!= -1 ){
 htmlContentToAppend += `
+<a href="product-info.html" class="list-group-item list-group-item-action">
             <div class="row"> 
                 <div class="col-3">
                     <img src="` + product.imgSrc + `" alt="` + `" class="img-thumbnail">
