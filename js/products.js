@@ -69,7 +69,7 @@ htmlContentToAppend += `
  }
 }
 
- document.getElementById("prod-list-container").innerHTML = htmlContentToAppend; //agrego el contenido a "results"
+ document.getElementById("prod-list-container").innerHTML = htmlContentToAppend; //agrego el contenido a "prod-list-container"
 }
 }
 //Función que se ejecuta una vez que se haya lanzado el evento de

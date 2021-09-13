@@ -1,14 +1,15 @@
 var product = {};
 
-// Funcion para mostrar carousel
+  // Funcion que muestra carousel
 function showImagesGallery(array) {
     let htmlContentToAppend = "";
     let carousel = document.getElementById("productImagesGallery");
 
-    // Recorre cada imagen
+    // Recorremos cada imagen con el bucle for
     for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
 
+    // lo agregamos en el html
         htmlContentToAppend += `
         <div class="carousel-item">
             <img class="d-block" src="` + imageSrc + `" alt="">
@@ -35,11 +36,12 @@ function loadComments() {
                 let rate = document.getElementById('formRate').value;
                 let message = document.getElementById('formMessage').value;
                 let name = document.getElementById('formName').value;
-                // Lo siguiente es para formatear la fecha
-                let tzoffset = (new Date()).getTimezoneOffset() * 60000;
-                let date = (new Date(Date.now() - tzoffset)).toISOString().substr(0, 19).replace('T', ' ');
+                // formateamos la fecha
+                let tzoffset = (new Date()).getTimezoneOffset() * 60000; // Creamos objeto "Date" vacio, con el método getTimezoneOffset (en minutos)*60000(60*1000=60000 milisegundos) expresamos la hora local en milisegundos
+                let date = (new Date(Date.now() - tzoffset)).toISOString().substr(0, 19).replace('T', ' '); // el método toISOString me devuelve la cadena en formato simplificado extendido
+                                                                                                            // con el método substr devuelvo los caracteres que quiero inicio en 0 y longitud de 19 caracteres
 
-                // Convierte comentario en un objeto
+                // Convertimos comentarios en un objeto
                 let comment = {
                     'score': rate,
                     'description': message,
@@ -48,7 +50,7 @@ function loadComments() {
                 };
 
                 // Añadir nuevo comentario al array, mostrar comentarios, limpiar formulario
-                resultObj.data.push(comment);
+                resultObj.data.push(comment); // con método push añadimos comentario
                 showFeedback(resultObj.data);
                 document.getElementById('leaveCommentForm').reset();
             });
@@ -56,11 +58,11 @@ function loadComments() {
     });
 }
 
-// Funcion para mostrar comentarios
+// Funcion con la que mostramos los comentarios
 function showFeedback(array) {
     let htmlContentToAppend = "";
 
-    // Recorre todos los comentarios
+    // Recorremos todos los comentarios con el for
     for (let i = 0; i < array.length; i++) {
         let feed = array[i];
         let user = feed.user;
@@ -90,9 +92,9 @@ function showFeedback(array) {
     }
     document.getElementById('comments').innerHTML = htmlContentToAppend;
 
-    // Obtener un array con contenedores de estrellas
+    // Obtenemos un array con contenedores de estrellas
     let starCont = document.getElementsByClassName('star-container');
-    // Llama a la funcion para pintar las estrellas
+    // Llamamos a la funcion para pintar las estrellas
     fillStars(array, starCont);
 }
 
@@ -110,7 +112,7 @@ function fillStars(array, starCont) {
         }
     }
 }
-// Funcion para mostrar datos del producto
+// Funcion con la que mostramos los datos del producto
 function showProductData() {
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
