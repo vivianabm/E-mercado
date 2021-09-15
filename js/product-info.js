@@ -1,4 +1,7 @@
 var product = {};
+var commentArray = [];
+
+
 
   // Funcion que muestra carousel
 function showImagesGallery(array) {
@@ -20,109 +23,69 @@ function showImagesGallery(array) {
     carousel.innerHTML = htmlContentToAppend;
     carousel.children[0].classList.add('active');
 }
+ // función para agregar comentario con puntuación
+function newComment() {
 
-// Funcion para ingresar comentario nuevo
-function loadComments() {
+    let comentText = document.getElementById("text").value;
+    let comentScore = document.getElementById('score').value;
+    let comentDate = new Date;
+    commentArray = {
+        "score": comentScore,
+        "description": comentText,
+        "user": JSON.parse(localStorage.getItem("User-Logged")).usuario, //traigo el usuario logeado
+        "dateTime": comentDate.getFullYear() + "-" + comentDate.getMonth() + "-" + comentDate.getDate() + " " + comentDate.getHours() + ":" + comentDate.getMinutes() + ":" + comentDate.getSeconds() //fecha y hora de comentario nuevo
+    }
+  
+    localStorage.setItem('newComment', JSON.stringify(commentArray));
+};
+
+// función para mostrar los comentarios
+function showComments() {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            // Muestro los comentarios guardados
-            showFeedback(resultObj.data);
+            commentsArray = resultObj.data;
+            
+//agregamos comentario nuevo a listado de comentarios
+            if (localStorage.getItem('newComment')) {
+                let sentComment = JSON.parse(localStorage.getItem('newComment'))
+                commentsArray.push(sentComment)
+            }
 
-            // Generar comentario nuevo
-            let form = document.getElementById('leaveCommentForm');
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
+            let commentToShow = "";  //recorremos los comentarios con el for y accedemos a los atributos
+            for (let i = 0; i < commentsArray.length; i++) {
+                let comment = commentsArray[i];
 
-                let rate = document.getElementById('formRate').value;
-                let message = document.getElementById('formMessage').value;
-                let name = document.getElementById('formName').value;
-                // formateamos la fecha
-                let tzoffset = (new Date()).getTimezoneOffset() * 60000; // Creamos objeto "Date" vacio, con el método getTimezoneOffset (en minutos)*60000(60*1000=60000 milisegundos) expresamos la hora local en milisegundos
-                let date = (new Date(Date.now() - tzoffset)).toISOString().substr(0, 19).replace('T', ' '); // el método toISOString me devuelve la cadena en formato simplificado extendido
-                                                                                                            // con el método substr devuelvo los caracteres que quiero inicio en 0 y longitud de 19 caracteres
+                let starsScore = comment.score;
+                let filledStars = ` <span class="fa fa-star checked"></span> `;
+                let blankStars = ` <span class="fa fa-star"></span> `;
+                let calification = filledStars.repeat(starsScore) + blankStars.repeat(5 - starsScore); // calificación con estrellas pintadas
 
-                // Convertimos comentarios en un objeto
-                let comment = {
-                    'score': rate,
-                    'description': message,
-                    'user': name,
-                    'dateTime': date
-                };
-
-                // Añadir nuevo comentario al array, mostrar comentarios, limpiar formulario
-                resultObj.data.push(comment); // con método push añadimos comentario
-                showFeedback(resultObj.data);
-                document.getElementById('leaveCommentForm').reset();
-            });
+                commentToShow += `
+                <dt class="d-inline">`+ comment.user + `</dt>
+                <p class="d-inline">- `+ comment.dateTime + ` -</p>
+                `+ calification + `
+                <dd><p class="text-muted">`+ comment.description + `</p></dd>
+                <hr class="my-3">
+                `
+            }
+            document.getElementById("comments").innerHTML = commentToShow;
         }
-    });
-}
-
-// Funcion con la que mostramos los comentarios
-function showFeedback(array) {
-    let htmlContentToAppend = "";
-
-    // Recorremos todos los comentarios con el for
-    for (let i = 0; i < array.length; i++) {
-        let feed = array[i];
-        let user = feed.user;
-        let comment = feed.description;
-        let date = feed.dateTime;
-
-        htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <div class="flex-column">
-                    <h5 class="mb-3"><b>` + user + `</b> dice:</h5>
-                    <span class="ml-3">"` + comment + `"</span>
-                </div>
-                <div class="row d-flex">
-                    <small class="text-muted">` + date + `</small>
-                </div>
-            </div>
-            <div class="mt-3 d-flex justify-content-center star-container"> 
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-            </div>
-        </div>
-        `;
-    }
-    document.getElementById('comments').innerHTML = htmlContentToAppend;
-
-    // Obtenemos un array con contenedores de estrellas
-    let starCont = document.getElementsByClassName('star-container');
-    // Llamamos a la funcion para pintar las estrellas
-    fillStars(array, starCont);
-}
-
-// Funcion para pintar estrellas
-function fillStars(array, starCont) {
-    // Recorre los contenedores
-    for (let i = 0; i < starCont.length; i++) {
-        let rate = array[i].score;
-
-        // Recorre las estrellas del contenedor
-        for (let check = 0; check < rate; check++) {
-            // Mientras que el numero de estrellas sea menor que el puntaje, la pinta
-            let star = starCont[i].children;
-            star[check].classList.add('checked');
-        }
-    }
-}
+    })
+};
 // Funcion con la que mostramos los datos del producto
 function showProductData() {
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
 
+            // accedemos a los id del Html y le agregamos con innerHTML los atributos del producto que vamos a mostrar
+            let productCategoryHTML= document.getElementById("productCategory");
             let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
             let productSoldCountHTML = document.getElementById("productSoldCount");
             let productCostHTML = document.getElementById("productCost");
 
+            productCategoryHTML.innerHTML = product.category;
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
             productSoldCountHTML.innerHTML = product.soldCount;
@@ -141,18 +104,8 @@ function showProductData() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function () {
     showProductData();
-    loadComments();
+   
+    
+    showComments();
 
-    // Agregar nombre de usuario al form de contacto
-    var nameHTML = document.getElementById('formName');
-    var name = localStorage.getItem('name');
-
-    if (name) {
-        nameHTML.setAttribute('value', name);
-    } else {
-        nameHTML.setAttribute('value', 'Usuario Anónimo');
-    }
-    // Impedir modificacion del campo
-    nameHTML.classList.add('disabled');
-    nameHTML.setAttribute('disabled', 'disabled');
 });

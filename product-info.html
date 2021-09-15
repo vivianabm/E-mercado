@@ -64,6 +64,11 @@
         </a>
       </div>
       <dl>
+        <dt>Categoría</dt>
+        <dd>
+          <p id="productCategory"></p>
+        </dd>
+
         <dt>Descripción</dt>
         <dd>
           <p id="productDescription"></p>
@@ -80,31 +85,24 @@
         </dd>
       </dl>
       <hr class="my-3">
-      <h3 class="text-center p-4">Comentarios</h3>
-      <div id="comments" class="mb-4"></div>
-      <div id="leaveComment" class="my-3">
-        <h3 class="text-center">Deja un comentario</h3>
-        <form class="w-75 mx-auto" id="leaveCommentForm">
-          <label for="formName" class="sr-only">Nombre</label>
-          <input type="text" class="form-control mb-2" id="formName" placeholder="Nombre" required>
-
-          <label for="formPuntuacion" class="sr-only">Puntuación</label>
-          <select id="formPuntuacion" class="form-control mb-2" required>
-            <option value="">Puntúa este producto</option>
-            <option value="1">&#9733;</option>
-            <option value="2">&#9733;&#9733;</option>
-            <option value="3">&#9733;&#9733;&#9733;</option>
-            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+      <dt>Comentarios</dt>
+        <hr class="my-3">
+          <div id="comments"></div>
+          <div id="newComments"></div><br>
+        <dt>Agregar nuevo comentario:</dt>
+          <hr class="my-3">
+          <dd class="text-muted">Escribe tu opinión aquí</dd>
+            <form> <textarea id="text" class="form-control col-md-6" rows="3"></textarea><br>
+            
+        <dd class="text-muted">Puntuación</dd>
+        <select id="score" class="form-control col-md-1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
           </select>
-
-          <label for="formMessage" class="sr-only">Comentario</label>
-          <textarea class="form-control mb-2" rows="3" style="resize: none;" id="formMessage" placeholder="Comentario"
-            required></textarea>
-
-          <button class="btn btn-lg btn-light btn-block" type="submit">Comentar</button>
-        </form>
-      </div>
+      <input type="submit" class="btn btn-primary mt-3" onclick="newComment()"></form>
       
     </dl>
     <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
