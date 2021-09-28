@@ -1,6 +1,30 @@
 var product = {};
 var commentArray = [];
 
+// función para buscar los datos de los productos relacionados
+function showrelatedProducts(arraylistado,arrayrelacionados){
+    let contenido ="<hr>" // definimos variable en la que mostrare los datos que traigo
+    arrayrelacionados.forEach(function(i){ // con el forEach ejecutamos las instrucciones para cada elemento del array
+        
+        contenido +=` 
+        
+        <p  class=" list-group-item-action"> 
+        <div class="row">
+                 <div class="col">
+                 <div class="d-flex w-100 justify-content-between">
+                 <h3 class="m-3">`+  arraylistado[i].name+`</h3>     
+                </div>
+         <p class="mb-1">` + "Precio:"+" "+arraylistado[i].currency +" "+ arraylistado[i].cost  + `</p>
+         <img src="${arraylistado[i].imgSrc}"width="235"><br><br>
+         <a href="product-info.html"> <button style="float: right;"> Ver producto </button></a>
+        </div>
+        </div>
+            </p>
+        `
+    });
+    document.getElementById("productRelated").innerHTML = contenido ; //luego de acceder a los atributos, añado los datos en el html
+}
+        
 
 
   // Funcion que muestra carousel
@@ -104,8 +128,17 @@ function showProductData() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function () {
     showProductData();
-   
-    
+
     showComments();
+
+    // función con la que mostramos los productos relacionados
+    getJSONData(PRODUCTS_URL ).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            productarray = resultObj.data;
+            showrelatedProducts(productarray,product.relatedProducts);
+            
+
+            
+        }});
 
 });

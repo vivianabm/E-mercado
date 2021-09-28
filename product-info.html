@@ -28,6 +28,8 @@
         <button id="user" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="cart.html">Mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <a id="salir" class="dropdown-item" >Cerrar sesión</a>
     </div>
   </div>
@@ -83,6 +85,7 @@
         <dd>
           <p id="productCost"></p>
         </dd>
+        
       </dl>
       <hr class="my-3">
       <dt>Comentarios</dt>
@@ -105,6 +108,12 @@
       <input type="submit" class="btn btn-primary mt-3" onclick="newComment()"></form>
       
     </dl>
+    <br><br>
+    <h4>Productos relacionados:</h4>
+        <hr class="my-3">
+        <div class="row" id="productRelated">
+        </div>
+        <br>
     <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
   </div>
 
