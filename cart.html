@@ -11,7 +11,7 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link href="css/font-awesome.min.css" rel="stylesheet" /> 
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -54,14 +54,362 @@
   </div>
     </div>
   </nav>
-  <div class="container p-5">
+  <!-- <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
+  </div> -->
+  
+ <!-- Container -->
+ <div class="container my-3">
+  <div class="row">
+    <!-- Inicio cuerpo de informacion principal -->
+    <main class="col-md-9">
+
+        <!-- Inicio carrito -->
+        <div class="card">
+          <div class="card-header text-white bg-info text-center" id="headingOne">
+              <h4>Mi Carrito</h4> 
+              <p class="lead">¡Hay un carrito que llenar!</p>
+          </div>
+            <div class="card-body">
+              <div id="itemsCarrito"></div>
+            </div>
+        </div>
+        <!-- cierre carrito -->
+
+        <!-- Inicio pestaña envio -->
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+             Información de envío  
+            </h5>
+            <div class=" d-lg-none">
+
+            <button class="btn btn-outline-success btn-sm float-right" type="button" data-toggle="collapse"
+             data-target="#filtrosDiv" aria-expanded="false" aria-controls="collapseExample">
+             <i class="fas fa-angle-double-down"></i>
+
+
+                    Haz click para ver las opciones 
+                </button>
+              </div>
+          </div>
+           <div class="row">
+            <div id="filtrosDiv" class="row align-items-center collapse d-lg-block">
+           <div class="col-md-4 col-lg-8">
+                <div class="card-body">
+                  <div id="envio">
+                    <input
+                      type="radio"
+                      id="premium"
+                      name="envio"
+                      value="1"
+                      />
+                    <label for="premium"
+                      ><strong> Premium (2-5 días)</strong></label>
+                    <small class="text-muted"
+                      ><br />Costo del 15% sobre el subtotal</small>
+                      <br />
+                    <input
+                      type="radio"
+                      id="express"
+                      name="envio"
+                      value="2"
+                    />
+                    <label for="express"
+                      ><strong> Express (5-8 días)</strong></label>
+                    <small class="text-muted"
+                      ><br />Costo del 7% sobre el subtotal</small
+                    ><br />
+                    <input
+                      type="radio"
+                      id="standard"
+                      name="envio"
+                      value="3"
+                      checked
+                    />
+                    <label for="standard"
+                      ><strong> Standard (12 a 15 días)</strong></label>
+                    <small class="text-muted"
+                      ><br />Costo del 5% sobre el subtotal.</small>
+                  </div>
+                </div>
+              
+              <!-- cierre input tipo de envio -->
+              <div class="col-md-10 col-lg-12 my-3 mx-1">
+                <form >
+                  <div class="form-row">
+                    <div class="col-md-8  mb-3">
+                      <h5>Datos de envío:</h5>
+                      <label for="inputNombre">Nombre</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputNombre"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-8 mb-3">
+                      <label for="inputApellido">Apellido</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputApellido"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <label for="inputCalle">Calle y Esquina</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputCalle"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-2 mb-3">
+                      <label for="inputNumero">Número</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputNumero"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-8 mb-3">
+                      <label for="inputDepartamentoPais">Departamento/Pais</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputDepartamentoPais"
+                        required
+                      />
+
+                    </div>
+                  </div>
+
+                  <button class="btn btn-primary " type="submit">
+                    Guardar
+                  </button>
+                </form>
+              </div>
+              <!-- cierre form direccion envio -->
+            </div>
+          </div>
+          
+        </div>
+        <!-- cierre envio -->
+
+
+      <!-- Inicio botones inferiores -->
+      <div class="card-body border">
+        <button
+          
+          class="btn btn-danger float-md-right"
+          id="finalizarCompra"
+        >
+          Finalizar compra <i class="fa fa-chevron-right"></i>
+        </button>
+        <a href="categories.html" class="btn btn-success">
+          <i class="fa fa-chevron-left"></i> Seguir comprando
+        </a>
+      </div>
+      </div>
+      <!-- Fin botones inferiores -->
+
+    </main>
+    <!-- cierre cuerpo de informacion principal -->
+
+    <!-- Inicio de resumen compra -->
+    <aside class="col-md-3">
+      <div class="sticky">
+        <div class="card my-1">
+          <h4 class="card-header bg-info text-center text-white">
+            Resumen
+          </h4>
+          <div class="card-body">
+            <dl class="dlist-align">
+              <dt>Sub total:</dt>
+              <dd class="text-right" id="subTotal"></dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Costo de envío:</dt>
+              <dd class="text-right" id="costoEnvio">USD</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Total a pagar:</dt>
+              <dd class="text-right h5"><strong id="total"></strong></dd>
+            </dl>
+            <hr />
+            <p class="text-center mb-3"></p>
+
+            <button
+              type="button"
+              class="btn btn-outline-success  btn-block"
+              data-toggle="modal"
+              data-target="#metodoModal"
+            >
+              <i class="fas fa-piggy-bank"></i> Métodos de pago
+            </button>
+            <hr />
+            <div id="infoEnvio"></div>
+            <div id="infoPago"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- cierre de resumen compra -->
+    
   </div>
+</div>
+
+<!-- Modal forma de pago (componente modal para que aparezca cuadro superpuesto) -->
+<div id="metodoModal" class="modal fade" role="dialog"> 
+  <div class="modal-dialog modal-lg" role="content">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Elija un método de pago</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <div class="list-group" id="list-tab" role="tablist">
+                <a
+                  class="list-group-item list-group-item-action active"
+                  id="list-tarjeta-list"
+                  data-toggle="list"
+                  href="#list-tarjeta"
+                  role="tab"
+                  aria-controls="tarjeta"
+                  ><i class="fas fa-credit-card mr-2"></i>Tarjeta de
+                  crédito</a
+                >
+                <a
+                  class="list-group-item list-group-item-action"
+                  id="list-banco-list"
+                  data-toggle="list"
+                  href="#list-banco"
+                  role="tab"
+                  aria-controls="banco"
+                  ><i class="fas fa-landmark mr-2"></i>Transferencia
+                  bancaria</a
+                >
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="tab-content" id="nav-tabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="list-tarjeta"
+                  role="tabpanel"
+                  aria-labelledby="list-tarjeta-list"
+                >
+                  <form>
+                    <div class="card bg-light mb-3">
+                      <div class="card-body">
+                        <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="nombreTarjeta"
+                              >Nombre del titular</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="nombreTarjeta"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <label for="fechaVenc">Vencimiento</label>
+                            <input
+                              type="month"
+                              class="form-control"
+                              id="fechaVenc"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="numTatjeta"
+                              >Número de tarjeta</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="numTatjeta"
+                              placeholder="XXXX-XXXX-XXXX-XXXX"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-2 mb-3">
+                            <label for="ccv">CCV</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="ccv"
+                              placeholder="123"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div class="form-row mx-1">
+                          <button class="btn btn-danger" type="submit">
+                            Guardar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="list-banco"
+                  role="tabpanel"
+                  aria-labelledby="list-banco-list"
+                >
+                  <div class="card bg-light mb-3">
+                    <div class="card-header">
+                      <strong> Cuenta número 000-111-222, BROU</strong>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                        <p class="card-text">
+                            Envíar el comprobante de depósito a <strong>transferencias@JAPemercado.com </strong>
+                          indicando  <strong>Nombre y Apellido </strong>en el asunto.
+                        </p>
+                          <button
+                            class="btn btn-danger"
+                            type="submit"
+                            id="botonAceptarTransf">
+                            Aceptar
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
