@@ -31,6 +31,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+   <!-- Se agregó link para iconos -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" /> 
+ 
 </head>
 
 <body>
@@ -48,20 +51,103 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
-          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a class="dropdown-item" href="my-profile.html"></a> <i class="far fa-user"></i> Mi perfil</a> 
+          
           <a id="salir" class="dropdown-item" >Cerrar sesión</a>
     </div>
   </div>
     </div>
   </nav>
   <div class="container p-5">
+    <div class="row">
+      <!-- Ingreso formulario -->
+      <div class="col-md-6">
+        <div class="card">
+          <h4 class="card-header bg-info text-center text-white">
+            Ingresa tus datos
+          </h4>
+          <div class="card-body">
+            <form onsubmit="guardarDatos()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputNombre">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputNombre"
+                    placeholder="Nombre"
+                    required
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputApellidos">Apellidos</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputApellidos"
+                    placeholder="Apellidos"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputEmail"
+                  placeholder="ejemplo@emercado.com"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEdad">Edad</label>
+                  <input type="number" class="form-control" id="inputEdad" required/>
+                </div>
+                <div class="form-group col-md-10">
+                  <label for="inputTelefono">Telefono de contacto</label>
+                  <input type="tel" class="form-control" id="inputTelefono" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputImagen">Imagen de perfil</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputImagen"
+                    placeholder="Ingrese la ruta de la imagen o se le asignará una"
+                  />
+                </div>
+              </div>
+               <button
+                type="submit"
+                class="btn btn-outline-success btn-lg btn-block"
+                id="botonGuardar">
+                <strong> Guardar mi perfil </strong> <i class="far fa-save"></i> 
+              </button>  
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Fin formulario -->
+
+      <!-- Div para mostrar informacion de perfil -->
+      <div id="mostrarPerfil" class="col-md-6"></div>
+    </div>
+  </div>
+ 
+  <!-- <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+  </div> -->
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
