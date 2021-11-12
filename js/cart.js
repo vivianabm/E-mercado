@@ -83,8 +83,19 @@ function mostrarCarrito(array) {
        localStorage[`guardarCantidad${i}`] = document.getElementById(`cantidad${i}`).value;
       }
       }
-  
-    
+  //AGREGADO CARTELITO CON DATOS QUE APARECE ABAJO DEL RESUMEN
+    // Mostrar datos de envio y pago en div de resumen
+    let datosEnvio = localStorage.getItem('datosEnvios');
+    let datosPago = localStorage.getItem('datosPago')
+
+    if (datosEnvio != null) {
+    document.getElementById("infoEnvio").innerHTML = datosEnvio;
+  }
+
+  if (datosPago != null) {
+    document.getElementById("infoPago").innerHTML = datosPago;
+  }
+    //HASTA AQUI
   }
   
   // Función que se ejecuta al cambiar la cantidad de un producto, calcula el precio total del item
@@ -109,7 +120,8 @@ function mostrarCarrito(array) {
     var st = 0;
     var envio = 0;
     var total = 0;
-   
+  
+
     // Calculo subtotal
     for (let i = 0; i < sumatoria.length; i++) {
       const sumat = sumatoria[i].innerHTML;
@@ -118,7 +130,22 @@ function mostrarCarrito(array) {
   
     document.getElementById("subTotal").innerHTML = "USD" + " " + st;
   
-  
+    //AGREGADO CALCULO ENVIO
+   // Calculo costo envío
+   if (document.getElementById("premium").checked) {
+    envio = (st * 0.15).toFixed(2);
+  }
+
+  if (document.getElementById("standard").checked) {
+    envio = (st * 0.05).toFixed(2);
+  }
+
+  if (document.getElementById("express").checked) {
+    envio = (st * 0.07).toFixed(2);
+  }
+
+  document.getElementById("costoEnvio").innerHTML = "USD" + " " + envio;
+//HASTA ACA
   
     // Calculo del total
     total = (parseFloat(st) + parseFloat(envio)).toFixed(2); //redondeamos el numero para mantener solo 2 decimales
@@ -126,8 +153,44 @@ function mostrarCarrito(array) {
   
    
   }
+  //AGREGADO
+  function activarBoton(okCheckBox) {
+    
+    if(okCheckBox.checked){
+        document.getElementById("botonAceptarTransf").disabled = false;
+    }
+    else{
+        document.getElementById("botonAceptarTransf").disabled = true;
+    }
+}
+
+
+
+  function guardarDatosEnvio() {
+    var datosEnvio = "";
+    var nombre = document.getElementById("inputNombre").value;
+    var apellido = document.getElementById("inputApellido").value;
   
+    datosEnvio = `<strong>Nombre:</strong>`+" "+ nombre +" "+ apellido;
   
+    localStorage.setItem('datosEnvios',datosEnvio);
+  }
+  
+  function guardarDatosTarjeta() {
+    var datosTarjeta = "";
+  
+    datosTarjeta = `<strong>Forma de pago:</strong>` + " " + "Tarjeta";
+    localStorage.setItem('datosPago',datosTarjeta);
+  
+  }
+  
+  function guardarDatosTransf() {
+    var datosTransf = "";
+  
+    datosTransf = `<strong>Forma de pago:</strong>` + " " + "Transferencia";
+    localStorage.setItem('datosPago',datosTransf);
+  }
+  //HASTA ACA
   
   //Función que se ejecuta una vez que se haya lanzado el evento de
   //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -142,6 +205,65 @@ function mostrarCarrito(array) {
       }
     });
   });
+
+  //AGREGADO:
+
+  // Función que muestra alertas para finalizar compra
+document.getElementById('finalizarCompra').addEventListener('click', function (e) {
+  let envioGuardado = document.getElementById('infoEnvio').innerHTML;
+  let pagoGuardado = document.getElementById('infoPago').innerHTML;
+  
+  if (envioGuardado != "" && pagoGuardado != "") {
+    
+    swal({
+      title: "¡Gracias por elegirnos! :) ",
+      text: "¡Que disfrutes tu compra!",
+      icon: "success",
+      buttons: ["Volver a inicio", "Cerrar sesión"],
+    dangerMode: true,
+  })
+  .then((cerrarSesion) => {
+    if (cerrarSesion) {
+      window.location.href = "index.html";
+      localStorage.clear();
+      
+    } else {
+      window.location = "inicio.html";
+      localStorage.removeItem('cantidadTotal');
+      localStorage.removeItem('guardarCantidad0');
+      localStorage.removeItem('guardarCarrito');
+      localStorage.removeItem('guardarCantidad1');
+    }
+  });
+  }
+  
+  
+  if (envioGuardado == "" && pagoGuardado != "") {
+    swal(
+      "¡Ops!",
+      "¡Debes ingresar tu información de envío!",
+      "error"
+    );
+  }
+  
+  if (envioGuardado != "" && pagoGuardado == "") {
+    swal(
+      "¡Ops!",
+      "¡Debes elegir un método de pago!",
+      "error"
+    );
+  }
+  
+  if (envioGuardado == "" && pagoGuardado == "") {
+    swal(
+      "¡Ops!",
+      "Por favor, elige un método de pago e ingresa tu información de envío",
+      "error"
+    );
+  }
+  
+  
+  }); //HASTA ACA
   
   // Función para borrar item del carrito
   function borrarItem(indice) {

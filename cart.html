@@ -108,6 +108,7 @@
                       id="premium"
                       name="envio"
                       value="1"
+                      onclick="calcularST()"
                       />
                     <label for="premium"
                       ><strong> Premium (2-5 días)</strong></label>
@@ -119,6 +120,7 @@
                       id="express"
                       name="envio"
                       value="2"
+                      onclick="calcularST()"
                     />
                     <label for="express"
                       ><strong> Express (5-8 días)</strong></label>
@@ -130,6 +132,7 @@
                       id="standard"
                       name="envio"
                       value="3"
+                      onclick="calcularST()"
                       checked
                     />
                     <label for="standard"
@@ -141,7 +144,7 @@
               
               <!-- cierre input tipo de envio -->
               <div class="col-md-10 col-lg-12 my-3 mx-1">
-                <form >
+                <form onsubmit="guardarDatosEnvio()">
                   <div class="form-row">
                     <div class="col-md-8  mb-3">
                       <h5>Datos de envío:</h5>
@@ -314,7 +317,7 @@
                   role="tabpanel"
                   aria-labelledby="list-tarjeta-list"
                 >
-                  <form>
+                  <form onsubmit="guardarDatosTarjeta()" >
                     <div class="card bg-light mb-3">
                       <div class="card-body">
                         <div class="form-row">
@@ -385,15 +388,29 @@
                       <strong> Cuenta número 000-111-222, BROU</strong>
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form onsubmit="guardarDatosTransf()">
                         <p class="card-text">
                             Envíar el comprobante de depósito a <strong>transferencias@JAPemercado.com </strong>
                           indicando  <strong>Nombre y Apellido </strong>en el asunto.
                         </p>
+                        <div class="form-check mb-2 mr-sm-2">
+                          <label class="form-check-label" for="deAcuerdo">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="deAcuerdo"
+                              onchange="activarBoton(this);"
+                            />
+                            Estoy de acuerdo
+                          </label>
+                        </div>
+                        <div class="form-row">
                           <button
                             class="btn btn-danger"
                             type="submit"
-                            id="botonAceptarTransf">
+                            id="botonAceptarTransf"
+                            disabled
+                          >
                             Aceptar
                           </button>
                         </div>
@@ -423,6 +440,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
